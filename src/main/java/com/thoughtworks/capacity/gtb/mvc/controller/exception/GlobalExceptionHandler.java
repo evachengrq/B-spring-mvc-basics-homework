@@ -1,6 +1,7 @@
 package com.thoughtworks.capacity.gtb.mvc.controller.exception;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,5 +22,13 @@ public class GlobalExceptionHandler {
     @ResponseBody
     public ErrorResult handle(WrongPasswordException ex) {
         return new ErrorResult(400, ex.getMessage());
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    public ErrorResult handle(MethodArgumentNotValidException ex) {
+        String message = ex.getBindingResult().getFieldError().getDefaultMessage();
+        return new ErrorResult(400, message);
     }
 }
