@@ -13,14 +13,20 @@ public class UserController {
 
     private final UserService userService;
 
-    public UserController(UserService userService) { this.userService = userService; }
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping("/users")
-    public List<User> getAllUsers() { return userService.getAllUsers(); }
+    public List<User> getAllUsers() {
+        return userService.getAllUsers();
+    }
 
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createUser(@RequestBody User user) {userService.createUser(user); }
+    public void createUser(@RequestBody User user) {
+        userService.createUser(user);
+    }
 
     @GetMapping("/login")
     public List<User> getUserByUsername(@RequestParam String username, String password) {
