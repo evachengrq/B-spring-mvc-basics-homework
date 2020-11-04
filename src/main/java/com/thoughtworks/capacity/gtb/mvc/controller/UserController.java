@@ -4,6 +4,7 @@ import com.thoughtworks.capacity.gtb.mvc.dto.User;
 import com.thoughtworks.capacity.gtb.mvc.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
