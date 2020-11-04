@@ -10,6 +10,7 @@ import java.util.Map;
 
 @Service
 public class UserService {
+
     private Map<Integer, User> userMap = new HashMap<>();
 
     public UserService() {
@@ -19,4 +20,5 @@ public class UserService {
 
     public List<User> getAllUsers() { return new ArrayList<>(userMap.values()); }
 
+    public void createUser(User user) { userMap.put(user.getId(), user); }
 }
