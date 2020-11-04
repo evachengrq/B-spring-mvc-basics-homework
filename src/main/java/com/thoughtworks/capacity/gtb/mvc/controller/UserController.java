@@ -15,16 +15,14 @@ public class UserController {
 
     public UserController(UserService userService) { this.userService = userService; }
 
-    @RequestMapping(value = "/users", method = RequestMethod.GET)
-    @ResponseBody
+    @GetMapping("/users")
     public List<User> getAllUsers() { return userService.getAllUsers(); }
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
     public void createUser(@RequestBody User user) {userService.createUser(user); }
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    @ResponseBody
+    @GetMapping("/login")
     public List<User> getUserByUsername(@RequestParam String username, String password) {
         return userService.getUserByUsername(username, password);
     }
