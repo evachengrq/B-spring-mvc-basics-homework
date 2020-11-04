@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -21,4 +22,11 @@ public class UserService {
     public List<User> getAllUsers() { return new ArrayList<>(userMap.values()); }
 
     public void createUser(User user) { userMap.put(user.getId(), user); }
+
+    public List<User> getUserByUsername(String username, String password) {
+        return userMap.values().stream()
+                .filter(user -> user.getUsername().equals(username))
+                .filter(user -> user.getPassword().equals(password))
+                .collect(Collectors.toList());
+    }
 }

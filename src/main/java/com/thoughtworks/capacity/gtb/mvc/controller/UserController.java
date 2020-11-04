@@ -22,4 +22,10 @@ public class UserController {
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public void createUser(@RequestBody User user) {userService.createUser(user); }
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @ResponseBody
+    public List<User> getUserByUsername(@RequestParam String username, String password) {
+        return userService.getUserByUsername(username, password);
+    }
 }
